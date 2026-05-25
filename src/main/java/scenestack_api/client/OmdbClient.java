@@ -45,37 +45,6 @@ public class OmdbClient {
                 .block();
     }
 
-    public SearchMovieResponseDTO searchMovies(String title, int page){
-        return client.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/")
-                        .queryParam("apikey", apiKey)
-                        .queryParam("s", title)
-                        .queryParam("type", "movie")
-                        .queryParam("page", page)
-                        .build())
-                .retrieve()
-                .bodyToMono(SearchMovieResponseDTO.class)
-                .retry(3)
-                .block();
-    }
-
-    public SearchSerieResponseDTO searchSeries(String title, int page){
-        return client.get()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/")
-                        .queryParam("apikey", apiKey)
-                        .queryParam("s", title)
-                        .queryParam("type", "series")
-                        .queryParam("page", page)
-                        .build())
-                .retrieve()
-                .bodyToMono(SearchSerieResponseDTO.class)
-                .retry(3)
-                .block();
-    }
-
-
     public MovieResponseDTO getMovieByImdbId(String imdbId) {
         return client.get()
                 .uri(uriBuilder -> uriBuilder

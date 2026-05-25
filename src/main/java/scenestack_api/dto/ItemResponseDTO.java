@@ -1,12 +1,22 @@
 package scenestack_api.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Data;
 
 @Data
 public class ItemResponseDTO {
-    private String Title;
-    private String Year;
-    private String Poster;
+    @JsonAlias("Title")
+    private String title;
+
+    @JsonAlias("Year")
+    private String year;
+
+    @JsonAlias("Poster")
+    private String poster;
+
+    @JsonAlias("imdbID")
     private String imdbID;
-    private String Type;
+
+    @JsonAlias("Type")
+    private String type;
 }
